@@ -119,6 +119,7 @@ function onAdding(form, formData) {
   }
 
   form.reset();
+  
 
   const operation = JSON.parse(saveOperation(JSON.stringify(formData)));
   operations.push(operation);
@@ -138,7 +139,7 @@ function sortBy(param, type) {
     operations.reverse();
   }
   else if(param === 'amount'){
-    operations.sort((a, b) => a[`${param}`] / a['currency'].rate - b[`${param}`] / b['currency'].rate);
+    operations.sort((a, b) => a[`${param}`] * a['currency'].rate - b[`${param}`] * b['currency'].rate);
   } 
   else {
     if (type === "string") {

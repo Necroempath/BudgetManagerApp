@@ -9,7 +9,7 @@ export function CreateEditForm(onSubmit) {
   const editForm = new OperationForm(form);
 
   editForm.enableCategoryOptions();
-  editForm.limitDateInput(...defineDateRange(3));
+  editForm.limitDateInput(...defineDateRange(3, 0));
   editForm.onTypeChanged(categories);
 
   editBtn.addEventListener("click", () => {

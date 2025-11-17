@@ -68,8 +68,8 @@ export class OperationForm {
     this.categoriesCash = categories;
     this.type.addEventListener("change", () => {
       this.category.disabled = false;
-      this.setDefaultOption("Choose category...");
       this.#setOptions(categories[this.type.value]);
+      this.setDefaultOption("Choose category...");
     });
   }
 
@@ -80,6 +80,15 @@ export class OperationForm {
   disableCategoryOptions() {
     this.category.disabled = true;
   }
+  
+  resetCategoryOptions(){
+    this.category.textContent = '';
+    const opt = document.createElement('option');
+
+    opt.value = '';
+    opt.textContent = 'Choose type first...';
+    this.category.append(opt);
+  }
 
   enableCategoryOptions() {
     this.category.disabled = false;
@@ -87,7 +96,8 @@ export class OperationForm {
 
   setDefaultOption(option) {
     const category = this.#setOption(option);
-
+    
+    category.selected = true;
     category.hidden = true;
     category.value = "";
   }

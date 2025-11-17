@@ -9,11 +9,13 @@ export function CreateAddForm(onSubmit) {
   const addForm = new OperationForm(form);
 
   addForm.disableCategoryOptions();
-  addForm.limitDateInput(...defineDateRange(3));
+  addForm.limitDateInput(...defineDateRange(3, 0));
   addForm.onTypeChanged(categories);
 
   addBtn.addEventListener("click", () => {
     onSubmit(form, addForm.readForm());
+    addForm.disableCategoryOptions();
+    addForm.resetCategoryOptions();
   });
 
   return addForm;

@@ -1,13 +1,13 @@
 const format = (date) => date.toISOString().split("T")[0];
 
-export function defineDateRange(range) {
+export function defineDateRange(min, max) {
   const today = new Date();
 
   const minDate = new Date(today);
-  minDate.setFullYear(today.getFullYear() - range);
+  minDate.setFullYear(today.getFullYear() - min);
 
   const maxDate = new Date(today);
-  maxDate.setFullYear(today.getFullYear() + range);
+  maxDate.setFullYear(today.getFullYear() + max);
 
   return [format(minDate), format(maxDate)];
 }
